@@ -4,13 +4,14 @@ if ($args[0] -eq $null){
     write-host -ForegroundColor Green "Correct Usage: .\pipeline.ps1 ""Commit message"" "
     exit 1
 }
-write-host ForegroundColor Orange "Setting up npm..."
+write-host ForegroundColor Orange " Installing the npm"
 npm install 
-write-host ForegroundColor Orange " Building project..."
+write-host ForegroundColor Orange " Building project"
 npm run build 
 if($?){
-    write-host -ForegroundColor Green "Build Succeeded!"
-    write-host "(2) Pushing changes to git..."
+
+    write-host -ForegroundColor Green "Build Succeeded"
+    write-host ForegroundColor Orange " Pushing to git"
     cd ..
     git add .
     git commit -m $args[0]
@@ -21,8 +22,7 @@ if($?){
     write-host "(3) Starting project locally..."
     npm run start
 }
-#Otherwise the build has failed and no commit should occur 
 else{
     write-host -ForegroundColor Red "Build Failed"
-    write-host "Unable to commit changes due to compile-time errors, please review"
+    write-host "Unable to commit due to compile-time errors "
 }
