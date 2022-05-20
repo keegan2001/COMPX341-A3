@@ -1,7 +1,7 @@
 #Checks if a commit message is attached initially. 
 if ($args[0] -eq $null){
-    write-host "Please specify a commit message. Usage:"
-    write-host "pipeline.ps1 ""Commit message"" "
+    write-host -ForegroundColor Red "Please enter a commit message"
+    write-host -ForegroundColor Green "Correct Usage: pipeline.ps1 ""Commit message"" "
     exit 1
 }
 write-host "(0) Setting up npm..."
