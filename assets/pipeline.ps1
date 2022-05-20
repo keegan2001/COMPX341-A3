@@ -4,12 +4,10 @@ if ($args[0] -eq $null){
     write-host -ForegroundColor Green "Correct Usage: .\pipeline.ps1 ""Commit message"" "
     exit 1
 }
-write-host "(0) Setting up npm..."
+write-host ForegroundColor Orange "Setting up npm..."
 npm install 
-write-host "(1) Building project..."
+write-host ForegroundColor Orange " Building project..."
 npm run build 
-#$? is an automatic value, which contains the execution status 
-#of the last operation. TRUE if succeeded or FALSE if failed
 if($?){
     write-host -ForegroundColor Green "Build Succeeded!"
     write-host "(2) Pushing changes to git..."
